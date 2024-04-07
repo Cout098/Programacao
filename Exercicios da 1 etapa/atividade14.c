@@ -6,13 +6,13 @@ int main(){
 
   float l1, l2, l3;
 
-  printf("Digite as medidas dos lados do triângulo: ");
+  printf("Digite as medidas dos lados do triï¿½ngulo: ");
   scanf("%f %f %f", &l1, &l2, &l3);
   if(l1 < l2 + l3 && l2 < l1 + l3 && l3 < l1 + l2){
-    printf("É possível formar um triângulo com essas medidas.\n");
+    printf("ï¿½ possï¿½vel formar um triï¿½ngulo com essas medidas.\n");
   }
   else {
-    printf("Não é possível formar um triângulo com essas medidas.\n");
+    printf("Nï¿½o ï¿½ possï¿½vel formar um triï¿½ngulo com essas medidas.\n" );
   }
   return 0;
 }
