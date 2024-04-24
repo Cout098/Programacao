@@ -8,7 +8,7 @@ int main(){
   scanf("%f",&cf);
 
   if(cf<18000){
-    pd=cf*0.05;
+    pd=0.05;
     ip=0;
   }
   if(cf>=18000 && cf<=25000){
@@ -25,4 +25,3 @@ int main(){
 
   return 0;
 }
-
