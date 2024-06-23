@@ -17,7 +17,17 @@ typedef struct
     float preco;
 } Produto;
 
-void cadastra_produto(Produto *produto){
+void limpa_tela()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void cadastra_produto(Produto *produto)
+{
     for (int indiceProduto = 0; indiceProduto < NUM_PROD; indiceProduto++)
     {
         printf("Digite o codigo produto: ");
@@ -32,7 +42,8 @@ void cadastra_produto(Produto *produto){
     }
 }
 
-int buscarProduto(){
+int buscarProduto()
+{
     int codBuscado;
     printf("Qual o Produto você esta buscando?");
     printf("Buque o produto pelo cod.\n");
@@ -41,12 +52,13 @@ int buscarProduto(){
     return codBuscado;
 }
 
-void altera_preco(Produto *produto, float novo_preco){
-    int indiceProduto;
+void altera_preco(Produto *produto, float novo_preco)
+{
+    int indiceProduto = 0;
     int cod_buscado;
 
     cod_buscado = buscarProduto();
-    
+
     for (indiceProduto = 0; indiceProduto < NUM_PROD; indiceProduto++)
     {
         if (cod_buscado == produto[indiceProduto].codigo)
@@ -56,13 +68,14 @@ void altera_preco(Produto *produto, float novo_preco){
     }
 }
 
-void exibir_produto(Produto *produto){
+void exibir_produto(Produto *produto)
+{
     int indiceProduto;
     int cod_buscado;
 
     cod_buscado = buscarProduto();
 
-    for ( indiceProduto = 0; indiceProduto < NUM_PROD; indiceProduto++)
+    for (indiceProduto = 0; indiceProduto < NUM_PROD; indiceProduto++)
     {
         if (cod_buscado == produto[indiceProduto].codigo)
         {
@@ -73,16 +86,17 @@ void exibir_produto(Produto *produto){
     }
 }
 
-int main(){
-    setlocale(LC_ALL, "Portuguese");
-
+int main()
+{
+    setlocale(LC_ALL,"Portuguese");
     Produto produto[NUM_PROD];
     float novo_preco = 0;
     int opc;
 
     do
     {
-        printf("Escolha uma opção: \n");
+        limpa_tela();
+        printf("-----Escolha uma opção-----\n");
         printf("1 - Cadastrar Produto.\n");
         printf("2 - Alterar Preços.\n");
         printf("3 - Exibir Produto.\n");
@@ -92,25 +106,31 @@ int main(){
         switch (opc)
         {
         case 1:
+            limpa_tela();
             cadastra_produto(produto);
             break;
         case 2:
+            limpa_tela();
+            printf("Digite o valor novo do produto: ");
+            scanf("%f", &novo_preco);
             altera_preco(produto, novo_preco);
             break;
 
         case 3:
+            limpa_tela();
             exibir_produto(produto);
             break;
 
         case 4:
+            limpa_tela();
             printf("Press enter");
             break;
-        
+
         default:
             printf("Opção inválida!");
             break;
         }
     } while (opc != 4);
-    
+
     return 0;
 }
